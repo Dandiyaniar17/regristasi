@@ -1,0 +1,121 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int status = 0;
+
+        while (status != -3) {
+            switch (status) {
+                case 0:
+                    System.out.println("Mulai = 0");
+
+                    int mulaiInput = scanner.nextInt();
+
+                    if (mulaiInput == 0) {
+                        status = 17;
+                    } else {
+                        System.out.println("Input tidak valid. Ulangi.");
+                    }
+                    break;
+
+                case 17:
+                    System.out.println("Pasien Masuk Menggunakan Aplikasi = 17");
+                    status = 251;
+                    break;
+
+                case 251:
+                    System.out.println("Melakukan Pengisian Data = 251");
+                    status = 301;
+                    break;
+
+                case 301:
+                    System.out.println("Admin Melakukan Validasi data Pasien = 301");
+ 
+                    int validasiInput = scanner.nextInt();
+
+                    if (validasiInput == 1) {
+                        status = 102;
+                    } else if (validasiInput == 2) {
+                        status = 209;
+                    } else {
+                        System.out.println("Input tidak valid. Ulangi.");
+                    }
+                    break;
+
+                case 209:
+                    System.out.println("Data Salah Mohon Input Data Ulang = 209");
+                    status = 301;  // Kembali ke awal untuk mengulang proses
+                    break;
+
+                case 102:
+                    System.out.println("Data Pasien Valid. = 706");
+                    status = 1000;
+                    break;
+
+                case 1000:
+                    System.out.println("Pasien Memesan Kamar = 1000");
+                    System.out.println("Pilih metode Pendaftaran (456 = BPJS, 321 = UMUM): ");
+                    int metodePendaftaran = scanner.nextInt();
+
+                    if (metodePendaftaran == 456) {
+                        status = 456;
+                    } else if (metodePendaftaran == 321) {
+                        status = 321;
+                    } else {
+                        System.out.println("Metode pembayaran tidak valid. Ulangi.");
+                    }
+                    break;
+
+                case 456:
+                    System.out.println("Data Pasien Tersimpan Otomatis di Sistem Rumah Sakit = 800");
+                    System.out.println("Bukti Pendaftaran = 862");
+                    status = 1001;
+                    break;
+
+                case 321:
+                    System.out.println("Data Pasien Tersimpan Otomatis di Sistem Rumah Sakit = 908");
+                    System.out.println("Syarat dan Rincian Pembayaran = 286");
+                    status = 230;
+                    break;
+
+                case 230:
+                    System.out.println("Pasien Melakukan Pembayaran = 230");
+                    int pembayaranInput = scanner.nextInt();
+
+                    if (pembayaranInput == -1) {
+                        status = -1;  // Selesai
+                    } else if (pembayaranInput == -2) {
+                        status = -2;  // Kembali ke pembayaran
+                    } else {
+                        System.out.println("Segera Melakukan Pembayaran.");
+                    }
+                    break;
+
+                case -2:
+                     System.out.println("Segera Melakukan Pembayaran = 99");
+                    status = 230;
+                    break;
+
+                case -1:
+                      System.out.println("Bukti Pendaftaran dan Pembayaran = 1001");
+                    status = 1001;
+                    break;
+
+                case 1001:
+                  
+                    System.out.println("Selesai");
+                    status = -3;
+                    break;
+
+                default:
+                    System.out.println("Status tidak valid. Program berhenti.");
+                    status = -3;
+            }
+        }
+
+        scanner.close();
+    }
+}
